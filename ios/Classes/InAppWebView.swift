@@ -1630,7 +1630,9 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
                  withError error: Error) {
         webView(view, didFail: navigation, withError: error)
     }
-    
+    public func webViewWebContentProcessDidTerminate(_ webView: WKWebView){
+        onConsoleMessage(message: "wkwebview memory error", messageLevel: 0)
+    }
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         InAppWebView.credentialsProposed = []
         
