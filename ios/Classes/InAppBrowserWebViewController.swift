@@ -155,10 +155,10 @@ class InAppBrowserWebViewController: UIViewController, UIScrollViewDelegate, WKU
         }
         viewPrepared = true
         super.viewWillAppear(animated)
-//        if(webView.title?.isEmpty ?? false){
-//            webView.onConsoleMessage(message: "no title url: \(webView.url?.absoluteString ?? "null")", messageLevel: 0)
-//            self.reload();
-//        }
+        if(webView.title?.isEmpty ?? true){
+            webView.onConsoleMessage(message: "no title url: \(webView.url?.absoluteString ?? "null")", messageLevel: 1)
+            self.reload();
+        }
     }
     
     func initLoad(initURL: URL?, initData: String?, initMimeType: String?, initEncoding: String?, initBaseUrl: String?, initHeaders: [String: String]?) {
