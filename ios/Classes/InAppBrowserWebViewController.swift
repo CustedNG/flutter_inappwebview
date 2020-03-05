@@ -107,6 +107,8 @@ class InAppBrowserWebViewController: UIViewController, UIScrollViewDelegate, WKU
     var startPageTime: Int64 = 0
     var viewPrepared = false
     
+    var lastURL: URL?
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
     }
@@ -153,6 +155,10 @@ class InAppBrowserWebViewController: UIViewController, UIScrollViewDelegate, WKU
         }
         viewPrepared = true
         super.viewWillAppear(animated)
+//        if(webView.title?.isEmpty ?? false){
+//            webView.onConsoleMessage(message: "no title url: \(webView.url?.absoluteString ?? "null")", messageLevel: 0)
+//            self.reload();
+//        }
     }
     
     func initLoad(initURL: URL?, initData: String?, initMimeType: String?, initEncoding: String?, initBaseUrl: String?, initHeaders: [String: String]?) {

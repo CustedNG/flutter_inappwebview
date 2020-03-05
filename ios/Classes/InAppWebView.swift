@@ -1631,7 +1631,7 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
         webView(view, didFail: navigation, withError: error)
     }
     public func webViewWebContentProcessDidTerminate(_ webView: WKWebView){
-        onConsoleMessage(message: "wkwebview memory error", messageLevel: 0)
+        onConsoleMessage(message: "wkwebview memory error", messageLevel: 1)
     }
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         InAppWebView.credentialsProposed = []
@@ -1646,6 +1646,7 @@ public class InAppWebView: WKWebView, UIScrollViewDelegate, WKUIDelegate, WKNavi
     }
     
     public func webView(_ webView: WKWebView, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
+        onConsoleMessage(message: "provisional------", messageLevel: 1)
         
         if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodHTTPBasic ||
             challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodDefault ||
